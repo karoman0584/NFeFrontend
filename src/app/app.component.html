@@ -1,0 +1,55 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+  <h5 class="my-0 mr-md-auto font-weight-normal">NFe - Processador de XML</h5>
+</div>
+
+<div class="container">
+
+  <div class="row mt-4 mb-3">
+    <div class="col-4 offset-7">
+      <label for="formFile" class="form-label">Selecione o XML da NFe</label>
+      <input class="form-control"
+             type="file"
+             id="formFile"
+             #fileInput
+             (change)="onFileInput(fileInput.files)">
+    </div>
+    <div class="col-1 padding-to-submitter">
+      <button class="btn btn-outline-primary"
+              (click)="uploadFile()">Enviar
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h5 class="mb-2">Arquivos Enviados</h5>
+      <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome Emitente</th>
+          <th scope="col">Nome Destinatario</th>
+          <th scope="col">Valor de Nota</th>
+          <th scope="col">Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let nfe of list">
+          <td>{{nfe.id}}</td>
+          <td>{{nfe.emitterName}}</td>
+          <td>{{nfe.receiverName}}</td>
+          <td>{{nfe.total|number}}</td>
+          <td>{{getNfeStatus(nfe.status)}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <small class="d-block mb-3 text-muted">&copy; 2022 NFe - Processador de XML</small>
+      </div>
+    </div>
+  </footer>
+</div>
